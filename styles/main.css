@@ -1,0 +1,54 @@
+/* *{
+    margin:0;
+    padding:0;
+} */
+body{
+    font:'lato';
+    word-spacing:2px;
+    letter-spacing:2px;
+}
+h3{
+    text-align:center;
+    /* color:darkorchid; */
+}
+
+.main-content{
+    display:flex;
+
+
+}
+.list{
+    flex:3;
+    /* background-color:#dedede; */
+    text-align:center;
+}
+.form{
+    flex:2;
+    /* background-color:cyan; */
+    /* <i class="fas fa-star"></i> */
+}
+#iImportant{
+    font-size:32px;
+    cursor:pointer;
+    color:#666;
+}
+#iImportant.fas{
+    color:red;
+}
+.form h3{
+    background-color:darkorchid;
+}
+.list h3{
+    background-color:teal;
+}
+.list button{
+    margin-top:50px;
+}
+label{
+    font-weight:600;
+    word-spacing:1px;
+    letter-spacing:1px;
+}
+div.my-field{
+    margin-bottom:15px;
+}

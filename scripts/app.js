@@ -53,7 +53,8 @@ function register() {
     isImportant
   );
   console.log(task);
-  displayTask(task);
+  // displayTask(task);
+
   //string number boolean http, must encode (ex stringify) to send complex data
   $.ajax({
     url: "https://fsdiapi.azurewebsites.net/api/tasks/",
@@ -61,7 +62,9 @@ function register() {
     data: JSON.stringify(task),
     contentType: "application/json",
     success: function (response) {
-      console.log("server says: ", response);
+      // console.log("server says: ", response);
+      let savedTask = JSON.parse(response); //parse json response into js object
+      displayTask(savedTask);
     },
     error: function (details) {
       console.log("error saving ", details);
@@ -73,13 +76,76 @@ function register() {
   //clear form
 }
 
+function fetchTasks() {
+  $.ajax({
+    //could use https://fsdiapi.azurewebsites.net/api/tasks/kyle to avoid validation
+    url: "https://fsdiapi.azurewebsites.net/api/tasks",
+    type: "GET",
+
+    success: function (response) {
+      // console.log("server says: ", response);
+      let tasks = JSON.parse(response); //array of tasks
+      // displayTask(savedTask);
+      console.log(tasks);
+      //for loop, get every object and send it to displaTasks
+
+      for (let i = 0; i < tasks.length; i++) {
+        if (tasks[i].name == "kyle") {
+          displayTask(tasks[i]);
+        }
+      }
+    },
+    error: function (details) {
+      console.log("error fetching tasks, ", details);
+    },
+  });
+}
+
+//delete all taskss
+//idea:make button to delete in html
+//url https://fsdiapi.azurewebsites.net/api/tasks/clear/kyle
+
+function deleteTasks() {
+  $.ajax({
+    url: "https://fsdiapi.azurewebsites.net/api/tasks/clear/kyle",
+    type: "DELETE",
+
+    success: function () {
+      // $("#task-list").remove();
+      //or empty();
+      $("#task-list").html("");
+      //vs empty
+    },
+    error: function (err) {
+      console.error(err);
+    },
+  });
+}
+function getStatusText(status) {
+  switch (status) {
+    case "0":
+      return "New";
+    case "1":
+      return "In Progress";
+    case "3":
+      return "Blocked";
+    case "6":
+      return "Completed";
+    case "9":
+      return "Removed";
+    default:
+      "missing";
+  }
+}
 function displayTask(task) {
-  let syntax = `<div class='task'>
+  let statusText = getStatusText(task.status);
+  let syntax = `<div class='task status-${task.status}'>
   <h3> ${task.title} </h3>
   <label> ${task.place} </label>
   <div class='dates'>
   <label> ${task.duration} </label>
   <label> ${task.deadline} </label>
+  <label> ${statusText} </label>
   </div>
   </div>`;
 
@@ -92,6 +158,7 @@ function init() {
   console.log("working");
 
   // load data
+  fetchTasks();
 
   //hook events
   //inline function anonymous
@@ -101,6 +168,7 @@ function init() {
   $("#iImportant").click(toggleImportant);
 
   $("#btnShowHide").click(togglePanel);
+  $("#btnDelete").click(deleteTasks);
   $("#btnReg").click(register);
 }
 window.onload = init;

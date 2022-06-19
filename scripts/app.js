@@ -28,6 +28,8 @@ function togglePanel() {
     isVisible = true;
   }
 }
+
+// saveTask
 function register() {
   console.log("here you go");
   //store values title.iImportat.txtDuration.selDeadline.txtLocation.selStatus
@@ -52,6 +54,19 @@ function register() {
   );
   console.log(task);
   displayTask(task);
+  //string number boolean http, must encode (ex stringify) to send complex data
+  $.ajax({
+    url: "https://fsdiapi.azurewebsites.net/api/tasks/",
+    type: "POST",
+    data: JSON.stringify(task),
+    contentType: "application/json",
+    success: function (response) {
+      console.log("server says: ", response);
+    },
+    error: function (details) {
+      console.log("error saving ", details);
+    },
+  });
 
   $("input").val("");
 
@@ -91,3 +106,17 @@ function init() {
 window.onload = init;
 
 //think of logic for toggle
+
+//need full version jquery script to use ajax
+function testRequests() {
+  $.ajax({
+    url: "https://fsdiapi.azurewebsites.net/",
+    type: "get",
+    success: function (response) {
+      console.log(response);
+    },
+    error: function (errorDet) {
+      console.log("error on request", errorDet);
+    },
+  });
+}

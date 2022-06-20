@@ -17,10 +17,9 @@ h3{
 
 
 }
-/* #heading{
-    margin-right:0;
-    margin-left:0;
-} */
+#heading{
+    background-color:teal;
+}
 .list{
     flex:3;
     /* background-color:#dedede; */
@@ -37,7 +36,7 @@ h3{
     color:#666;
 }
 #iImportant.fas{
-    color:red;
+    color:lightgreen;
 }
 .form h3{
     background-color:darkorchid;
@@ -62,7 +61,7 @@ div.my-field{
     border:1px solid #dedede;
     display:flex;
     align-items:center;
-    background-color:teal;
+    /* background-color:teal; */
     padding:7px 10px;
     margin:0 20px;
 }
@@ -79,19 +78,22 @@ div.my-field{
     display:block;
 }
 .status-0{
-background-color:red;
+    background-color:aqua; 
+    border-radius:15px;
 }
 .status-1{
-    background-color:blue;
+    background-color: teal; 
+    border-radius:15px;
 }
 .status-3{
-    background-color:purple;
+    background-color: darkorchid; 
+    border-radius:15px;
 }
 .status-6{
-    background-color:green;
+    background-color:lightgreen; 
+    border-radius:15px;
 }
 .status-9{
-    background-color:violet;
-    /* border:1px solid red; */
-    /* border-left-width:5px; */
+    background-color: violet; 
+    border-radius:15px;
 }

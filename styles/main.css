@@ -1,7 +1,3 @@
-/* *{
-    margin:0;
-    padding:0;
-} */
 body{
     font:'lato';
     word-spacing:2px;
@@ -9,26 +5,19 @@ body{
 }
 h3{
     text-align:center;
-    /* color:darkorchid; */
 }
-
 .main-content{
     display:flex;
-
-
 }
 #heading{
     background-color:teal;
 }
 .list{
     flex:3;
-    /* background-color:#dedede; */
     text-align:center;
 }
 .form{
     flex:2;
-    /* background-color:cyan; */
-    /* <i class="fas fa-star"></i> */
 }
 #iImportant{
     font-size:32px;
@@ -41,11 +30,6 @@ h3{
 .form h3{
     background-color:darkorchid;
 }
-/* .list h3{
-    background-color:teal;
-} */
-
-
 .list button{
     margin-top:50px;
 }
@@ -61,7 +45,6 @@ div.my-field{
     border:1px solid #dedede;
     display:flex;
     align-items:center;
-    /* background-color:teal; */
     padding:7px 10px;
     margin:0 20px;
 }
@@ -97,10 +80,6 @@ div.my-field{
     background-color: violet; 
     border-radius:15px;
 }
-
-/* div.buttons{
-    margin-bottom:15px;
-} */
 #task-list{
     padding-top: 20px;
 }
